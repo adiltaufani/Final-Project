@@ -214,7 +214,7 @@ class _MessageScreenState extends State<MessageScreen> {
                 height: 700,
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: 5,
+                  itemCount: 3,
                   itemBuilder: (context, index) {
                     return ListTile(
                       leading: ShimmerWidget.circular(width: 64, height: 64),
