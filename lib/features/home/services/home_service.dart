@@ -41,7 +41,7 @@ class HomeService {
       throw Exception("Location permission denied");
     }
     Position position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
+      desiredAccuracy: LocationAccuracy.low,
     );
     return position;
   }
