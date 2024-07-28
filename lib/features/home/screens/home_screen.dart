@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   double longitude = 0.0;
   String kota = '';
   bool isData = false;
+  bool _showTutorial = false;
 
   TutorialCoachMark? tutorialCoachMark;
   List<TargetFocus> targets = [];
@@ -50,14 +51,25 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.initState();
     fetchUserData();
     runPHPCodeOnHomeScreen();
+    _loadTutorialStatus();
     getLocation();
     AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
       if (!isAllowed) {
         AwesomeNotifications().requestPermissionToSendNotifications();
       }
     });
-    Future.delayed(const Duration(seconds: 1), () {
-      _showTutorialCoach();
+  }
+
+  Future<void> _loadTutorialStatus() async {
+    bool showTutorial = await HomeService.checkTutorialStatus();
+    setState(() {
+      _showTutorial = showTutorial;
+      print("ini tes show tutorial${_showTutorial}");
+      if (_showTutorial) {
+        Future.delayed(const Duration(seconds: 1), () {
+          _showTutorialCoach();
+        });
+      }
     });
   }
 
@@ -85,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   },
                   onSkip: () {
                     controller.skip();
+                    isTutorial();
                   },
                 );
               })
@@ -105,6 +118,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   },
                   onSkip: () {
                     controller.skip();
+                    isTutorial();
                   },
                 );
               })
@@ -125,6 +139,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   },
                   onSkip: () {
                     controller.skip();
+                    isTutorial();
                   },
                 );
               })
@@ -142,9 +157,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
                   onNext: () {
                     controller.next();
+                    isTutorial();
                   },
                   onSkip: () {
                     controller.skip();
+                    isTutorial();
                   },
                 );
               })
@@ -489,6 +506,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       print('PHP code executed successfully.');
     } else {
       print('Failed to execute PHP code.');
+    }
+  }
+
+  Future<void> isTutorial() async {
+    bool success = await HomeService.isTutorial();
+    if (success) {
+      print('isTotrial setted');
+    } else {
+      print('isTutorial set failed');
     }
   }
 
