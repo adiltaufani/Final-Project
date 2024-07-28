@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/features/auth/screens/login_screen.dart';
 import 'package:flutter_project/features/profile/model/profile_view_model.dart';
 import 'package:flutter_project/features/profile/screens/profile_setting.dart';
 import 'package:flutter_project/features/message/screens/message_screen.dart';
@@ -246,8 +247,8 @@ class _SettingPageState extends State<SettingPage> {
                 return LogoutDialog(
                   onConfirmLogout: () {
                     _viewModel.signOut().then((_) {
-                      Navigator.pop(context);
-                      Navigator.pop(context); // Keluar dari setting page
+                      Navigator.pushNamed(context,
+                          LoginScreen.routeName); // Keluar dari setting page
                     });
                   },
                 );
