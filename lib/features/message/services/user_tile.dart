@@ -75,6 +75,7 @@ class _UserTileState extends State<UserTile> {
                           } else if (snapshot.hasError) {
                             return Text('Error ${snapshot.error}');
                           } else {
+                            print('ini data reveiver =${widget.recieverUid}');
                             return CircleAvatar(
                               radius: 26,
                               backgroundColor: Colors.white30,
