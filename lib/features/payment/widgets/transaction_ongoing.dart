@@ -121,7 +121,7 @@ class _TransactionOngoingState extends State<TransactionOngoing> {
               ClipRect(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  height: isConstScrolled[index] ? 264 : 172,
+                  height: isConstScrolled[index] ? 294 : 172,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
@@ -168,15 +168,19 @@ class _TransactionOngoingState extends State<TransactionOngoing> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              _viewModel.listData[index]
-                                                  ['nama_penginapan'],
-                                              style: GoogleFonts.montserrat(
-                                                textStyle: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
-                                                  letterSpacing: -0.6,
+                                            Container(
+                                              constraints:
+                                                  BoxConstraints(maxWidth: 200),
+                                              child: Text(
+                                                _viewModel.listData[index]
+                                                    ['nama_penginapan'],
+                                                style: GoogleFonts.montserrat(
+                                                  textStyle: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                    letterSpacing: -0.6,
+                                                  ),
                                                 ),
                                               ),
                                             ),
