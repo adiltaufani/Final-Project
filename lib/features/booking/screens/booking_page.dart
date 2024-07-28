@@ -1205,11 +1205,25 @@ class _BookingPageState extends State<BookingPage> {
     );
   }
 
+<<<<<<< HEAD
   void _openMap(double lat, double long) async {
     // Membentuk URL Google Maps dengan koordinat yang diberikan
     String googleUrl =
+=======
+  Future<void> openMap(double lat, double long) async {
+    String googleURL =
+>>>>>>> 380cf9e95ab52cd7c281740e347ef1cbaca94308
         'https://www.google.com/maps/search/?api=1&query=$lat,$long';
 
+    if (await canLaunch(googleUrl)) {
+      await launch(googleUrl);
+    } else {
+      throw 'Could not open the map.';
+    }
+  }
+
+  void _openMap(double lat, double long) async {
+    String googleUrl = 'https://twitter.com';
     if (await canLaunch(googleUrl)) {
       await launch(googleUrl);
     } else {
