@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 
 class HomeService {
+  String uid = '';
   static Future<Map<String, dynamic>?> fetchUserData() async {
     var user = FirebaseAuth.instance.currentUser;
     if (user == null) {
@@ -54,5 +55,71 @@ class HomeService {
     } catch (e) {
       throw Exception("Error: $e");
     }
+  }
+
+  static Future<bool> isTutorial() async {
+    final url = '${ipaddr}/ta_projek/crudtaprojek/update_tutorial.php';
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user == null) {
+      print("No user is currently logged in.");
+      return false;
+    }
+
+    final uid = user.uid;
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'user_uid': uid,
+        }),
+      );
+
+      return response.statusCode == 200;
+    } catch (e) {
+      print("Error: $e");
+      return false;
+    }
+  }
+
+  static Future<bool> checkTutorialStatus() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      print("No user is currently logged in.");
+      return false;
+    }
+
+    final uid = user.uid;
+    final url = '${ipaddr}/ta_projek/crudtaprojek/tutorial_check.php';
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'user_uid': uid,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        if (data['success'] == true) {
+          return data['is_tutorial'] == 1;
+        } else {
+          print("Error: ${data['message']}");
+        }
+      } else {
+        print("Error: ${response.statusCode}");
+      }
+    } catch (e) {
+      print("Error: $e");
+    }
+    return false;
   }
 }
