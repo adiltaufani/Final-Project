@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/features/profile/model/profile_view_model.dart';
+import 'package:flutter_project/features/profile/screens/setting_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileSetting extends StatefulWidget {
@@ -290,6 +291,8 @@ class _ProfileSettingState extends State<ProfileSetting> {
                                                     ?.validate() ??
                                                 false) {
                                               _updateUserData();
+                                              Navigator.pushNamed(context,
+                                                  SettingPage.routeName);
                                             }
                                           },
                                           child: Text(

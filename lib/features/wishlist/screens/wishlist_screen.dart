@@ -367,17 +367,23 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Flexible(
-                                              child: Text(
-                                                _wishlist[index]
-                                                    .nama_penginapan,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: GoogleFonts.montserrat(
-                                                  textStyle: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 16.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    letterSpacing: -0.5,
+                                              child: Container(
+                                                constraints: BoxConstraints(
+                                                    maxWidth: 190),
+                                                child: Text(
+                                                  _wishlist[index]
+                                                      .nama_penginapan,
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: GoogleFonts.montserrat(
+                                                    textStyle: const TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 16.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      letterSpacing: -0.5,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
