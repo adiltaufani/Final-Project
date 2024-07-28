@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/features/payment/screens/transaction_screen.dart';
 import 'package:flutter_project/features/reschedule/model/reschedule_view_model.dart';
 import 'package:flutter_project/variables.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -170,6 +171,8 @@ class _ReschedulePageState extends State<ReschedulePage> {
                     child: ElevatedButton(
                       onPressed: () {
                         _viewModel.deleteBooking(widget.booking_id);
+                        Navigator.pushNamed(
+                            context, TransactionScreen.routeName);
                       },
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(double.infinity, 52),
@@ -1229,6 +1232,8 @@ class _ReschedulePageState extends State<ReschedulePage> {
                     TextButton(
                         onPressed: () {
                           Navigator.pop(context);
+                          Navigator.pushNamed(
+                              context, TransactionScreen.routeName);
                         },
                         child: Text('ok'))
                   ],
