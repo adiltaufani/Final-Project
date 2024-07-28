@@ -124,7 +124,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
+          height: 1203,
           decoration: const BoxDecoration(
             color: Colors.white,
           ),

@@ -21,6 +21,7 @@ class HomeService {
     });
 
     var data = json.decode(response.body);
+    print("ini data uid${uid}");
     return data;
   }
 

@@ -9,9 +9,35 @@ import 'package:flutter_project/features/home/screens/home_screen.dart';
 
 class AuthService {
   final FirebaseAuthService _auth = FirebaseAuthService();
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<void> signInWithGoogle(BuildContext context) async {
-    // Logika autentikasi Google
+    try {
+      GoogleAuthProvider googleProvider = GoogleAuthProvider();
+      UserCredential userCredential =
+          await auth.signInWithProvider(googleProvider);
+
+      User? user = userCredential.user;
+
+      if (user != null) {
+        // Login berhasil, lakukan navigasi ke screen berikutnya atau tampilkan pesan sukses
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Login berhasil: ${user.email}'),
+          ),
+        );
+        // Navigasi ke screen berikutnya jika diperlukan
+        // Navigator.pushReplacementNamed(context, '/home');
+        print('Google login berhasil');
+      }
+    } catch (e) {
+      print('Error during Google sign in: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Login gagal: $e'),
+        ),
+      );
+    }
   }
 
   Future<void> _registerUser(

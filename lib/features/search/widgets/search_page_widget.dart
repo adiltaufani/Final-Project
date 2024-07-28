@@ -46,14 +46,16 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
     'Makassar',
     'Palembang',
     'Bekasi',
-    'Surakarta',
+    'Solo',
     'Manado',
-    'Mataram',
-    'Pontianak',
-    'Kupang',
+    'Malang',
+    'Depok',
+    'Tangerang',
+    'Semarang',
+    'Bogor',
     'Banjarmasin',
     'Jogja',
-    'Ternate',
+    'Ternate'
   ];
   List _foundKota = [];
 
