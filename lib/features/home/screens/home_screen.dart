@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               builder: (context, controller) {
                 return CoachMarkDesc(
                   text:
-                      'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+                      'Here you can manage your profile and personal information.',
                   onNext: () {
                     controller.next();
                   },
@@ -98,8 +98,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               align: ContentAlign.bottom,
               builder: (context, controller) {
                 return CoachMarkDesc(
-                  text:
-                      'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+                  text: 'Here you can see all of the notifications.',
                   onNext: () {
                     controller.next();
                   },
@@ -118,8 +117,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               align: ContentAlign.bottom,
               builder: (context, controller) {
                 return CoachMarkDesc(
-                  text:
-                      'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+                  text: 'Here you can find the information you need',
                   onNext: () {
                     controller.next();
                   },
@@ -139,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               builder: (context, controller) {
                 return CoachMarkDesc(
                   text:
-                      'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+                      'Here you can navigate the menu between application features',
                   onNext: () {
                     controller.next();
                   },
@@ -159,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               builder: (context, controller) {
                 return CoachMarkDesc(
                   text:
-                      'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+                      'Here you can select the type of property you are looking for',
                   onNext: () {
                     controller.next();
                   },
