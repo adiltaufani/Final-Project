@@ -76,7 +76,7 @@ class _PaymentSuccessState extends State<PaymentSuccess> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(color: Colors.blue),
+        decoration: BoxDecoration(color: Colors.blue.shade400),
         child: Center(
           child: SafeArea(
             child: Column(
@@ -86,7 +86,7 @@ class _PaymentSuccessState extends State<PaymentSuccess> {
                   height: 172,
                 ),
                 Image.asset(
-                  'assets/images/check.png',
+                  'assets/images/checked.png',
                   height: 120,
                 ),
                 SizedBox(
@@ -95,7 +95,7 @@ class _PaymentSuccessState extends State<PaymentSuccess> {
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                    text: "You're\ntranscation ",
+                    text: "Your\ntranscation ",
                     style: GoogleFonts.manrope(
                       fontSize: 24,
                       color: const Color(0xFFDEE1FE),

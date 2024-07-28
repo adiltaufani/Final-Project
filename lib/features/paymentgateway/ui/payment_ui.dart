@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/features/notification/screens/payment_success.dart';
+import 'package:flutter_project/features/payment/screens/payment_success.dart';
 import 'package:flutter_project/features/paymentgateway/services/token_service.dart';
 import 'package:midtrans_sdk/midtrans_sdk.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as dot_env;

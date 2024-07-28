@@ -10,7 +10,7 @@ import 'package:flutter_project/features/home/screens/near_from_you.dart';
 import 'package:flutter_project/features/landmark/screens/landmark_screen.dart';
 import 'package:flutter_project/features/message/screens/message_screen.dart';
 import 'package:flutter_project/features/notification/screens/notification_page.dart';
-import 'package:flutter_project/features/notification/screens/payment_success.dart';
+import 'package:flutter_project/features/payment/screens/payment_success.dart';
 import 'package:flutter_project/features/payment/screens/payment_page.dart';
 import 'package:flutter_project/features/payment/screens/transaction_screen.dart';
 import 'package:flutter_project/features/paymentgateway/ui/payment_ui.dart';
