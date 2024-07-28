@@ -53,7 +53,6 @@ class _AiFabState extends State<AiFab> {
 
   @override
   void initState() {
-    _sendMessageInit();
     super.initState();
   }
 
