@@ -7,6 +7,7 @@ import 'package:flutter_project/features/payment/screens/payment_page.dart';
 import 'package:flutter_project/features/booking/services/booking_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class BookingPage extends StatefulWidget {
@@ -1204,11 +1205,15 @@ class _BookingPageState extends State<BookingPage> {
     );
   }
 
-  Future<void> _openMap(double lat, double long) async {
-    String googleURL =
+  void _openMap(double lat, double long) async {
+    // Membentuk URL Google Maps dengan koordinat yang diberikan
+    String googleUrl =
         'https://www.google.com/maps/search/?api=1&query=$lat,$long';
-    await canLaunchUrlString(googleURL)
-        ? await launchUrlString(googleURL)
-        : throw 'Could not launch $googleURL';
+
+    if (await canLaunch(googleUrl)) {
+      await launch(googleUrl);
+    } else {
+      throw 'Could not open the map.';
+    }
   }
 }
