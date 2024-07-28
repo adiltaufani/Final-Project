@@ -35,6 +35,26 @@ class _AuthScreenState extends State<AuthScreen> {
     _repeatpasswordController.dispose();
   }
 
+  void _showPasswordErrorSnackBar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Password harus memiliki minimal 6 karakter.'),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.redAccent,
+      ),
+    );
+  }
+
+  void _showEmailErrorSnackBar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Email must be valid.'),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.redAccent,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,7 +185,11 @@ class _AuthScreenState extends State<AuthScreen> {
                     padding: const EdgeInsets.only(top: 10),
                     child: ElevatedButton(
                       onPressed: () {
-                        if (_signUpFormKey.currentState!.validate()) {
+                        if (_passwordController.text.length < 6) {
+                          _showPasswordErrorSnackBar();
+                        } else if (!_emailController.text.contains('@')) {
+                          _showEmailErrorSnackBar();
+                        } else if (_signUpFormKey.currentState!.validate()) {
                           _authService.signUp(
                             context: context,
                             email: _emailController.text,

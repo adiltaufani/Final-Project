@@ -230,13 +230,16 @@ class _BookingPageState extends State<BookingPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                widget.locationName,
-                style: GoogleFonts.montserrat(
-                  textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600),
+              Container(
+                constraints: const BoxConstraints(maxWidth: 332),
+                child: Text(
+                  widget.locationName,
+                  style: GoogleFonts.montserrat(
+                    textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
               ),
               GestureDetector(
@@ -290,13 +293,16 @@ class _BookingPageState extends State<BookingPage> {
               const SizedBox(width: 6),
               GestureDetector(
                 onTap: () {},
-                child: Text(
-                  widget.locationAddress,
-                  style: GoogleFonts.montserrat(
-                    textStyle: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500),
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: 320),
+                  child: Text(
+                    widget.locationAddress,
+                    style: GoogleFonts.montserrat(
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ),
               ),
@@ -470,13 +476,16 @@ class _BookingPageState extends State<BookingPage> {
             const SizedBox(width: 2),
             Padding(
               padding: const EdgeInsets.only(left: 6.0),
-              child: Text(
-                widget.locationAddress,
-                style: GoogleFonts.montserrat(
-                  textStyle: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: 320),
+                child: Text(
+                  widget.locationAddress,
+                  style: GoogleFonts.montserrat(
+                    textStyle: const TextStyle(
+                      color: Colors.black87,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
