@@ -171,117 +171,53 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
               Container(
                 margin: const EdgeInsets.fromLTRB(3, 2, 4, 2),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SortButton(
-                      namaKota: widget.namaKota,
-                      tanggal_checkin: widget.tanggal_checkin,
-                      tanggal_checkout: widget.tanggal_checkout,
-                      hargaMin: widget.hargaAwal,
-                      hargaMax: widget.hargaAkhir,
-                      Bintang: widget.bintang,
-                      Wifi: widget.wifi,
-                      KolamRenang: widget.kolamRenang,
-                      Parkir: widget.parkir,
-                      Restoran: widget.restoran,
-                      Gym: widget.gym,
-                      Resepsionis_24_jam: widget.resepsionis24jam,
+                    Row(
+                      children: [
+                        SortButton(
+                          namaKota: widget.namaKota,
+                          tanggal_checkin: widget.tanggal_checkin,
+                          tanggal_checkout: widget.tanggal_checkout,
+                          hargaMin: widget.hargaAwal,
+                          hargaMax: widget.hargaAkhir,
+                          Bintang: widget.bintang,
+                          Wifi: widget.wifi,
+                          KolamRenang: widget.kolamRenang,
+                          Parkir: widget.parkir,
+                          Restoran: widget.restoran,
+                          Gym: widget.gym,
+                          Resepsionis_24_jam: widget.resepsionis24jam,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Sort by',
+                              style: GoogleFonts.montserrat(
+                                textStyle: const TextStyle(fontSize: 10),
+                              ),
+                            ),
+                            Text(
+                              'Popularity',
+                              style: GoogleFonts.montserrat(
+                                textStyle: const TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     // Image.asset(
                     //   'assets/images/sort.png',
                     //   height: 34,
                     // ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Sort by',
-                          style: GoogleFonts.montserrat(
-                            textStyle: const TextStyle(fontSize: 10),
-                          ),
-                        ),
-                        Text(
-                          'Popularity',
-                          style: GoogleFonts.montserrat(
-                            textStyle: const TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ],
-                    ),
+
                     const SizedBox(width: 6),
-                    OutlinedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
-                        side: MaterialStateProperty.all(
-                          const BorderSide(
-                            color: Color(0xFF0A8ED9),
-                            width: 1.2,
-                          ),
-                        ),
-                        minimumSize: MaterialStateProperty.all(
-                            const Size(double.minPositive, 34)),
-                        maximumSize: MaterialStateProperty.all(
-                          const Size(double.infinity, 34),
-                        ),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                5), // Mengatur kelengkungan sudut di sini
-                          ),
-                        ),
-                      ),
-                      onPressed: () async {
-                        final DateTimeRange? dateTimeRange =
-                            await showDateRangePicker(
-                          context: context,
-                          firstDate: DateTime(2000),
-                          lastDate: DateTime(3000),
-                        );
-                        if (dateTimeRange != null) {
-                          setState(() {
-                            selectedDates = DateTimeRange(
-                              start: DateTime(
-                                  dateTimeRange.start.year,
-                                  dateTimeRange.start.month,
-                                  dateTimeRange.start.day),
-                              end: DateTime(
-                                  dateTimeRange.end.year,
-                                  dateTimeRange.end.month,
-                                  dateTimeRange.end.day),
-                            );
-                            print(selectedDates);
-                          });
-                        }
-                      },
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.calendar_today,
-                            color: Color(0xFF0A8ED9),
-                            size: 18,
-                          ), // Ikon di sebelah kiri
-                          const SizedBox(
-                              width: 8), // Spacer antara ikon dan teks
-                          Text(
-                            '01 Jan..',
-                            style: GoogleFonts.raleway(
-                              textStyle: const TextStyle(
-                                color: Color(0xFF0A8ED9),
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 6,
-                    ),
-                    Expanded(
+                    Padding(
+                      padding: const EdgeInsets.only(right: 2.0),
                       child: OutlinedButton(
                         style: ButtonStyle(
                           backgroundColor:
@@ -292,8 +228,11 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                               width: 1.2,
                             ),
                           ),
-                          minimumSize:
-                              MaterialStateProperty.all(const Size(80, 34)),
+                          minimumSize: MaterialStateProperty.all(
+                              const Size(double.minPositive, 34)),
+                          maximumSize: MaterialStateProperty.all(
+                            const Size(double.infinity, 34),
+                          ),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
@@ -301,19 +240,40 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                             ),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          final DateTimeRange? dateTimeRange =
+                              await showDateRangePicker(
+                            context: context,
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(3000),
+                          );
+                          if (dateTimeRange != null) {
+                            setState(() {
+                              selectedDates = DateTimeRange(
+                                start: DateTime(
+                                    dateTimeRange.start.year,
+                                    dateTimeRange.start.month,
+                                    dateTimeRange.start.day),
+                                end: DateTime(
+                                    dateTimeRange.end.year,
+                                    dateTimeRange.end.month,
+                                    dateTimeRange.end.day),
+                              );
+                              print(selectedDates);
+                            });
+                          }
+                        },
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Icon(
-                              Icons.group,
+                              Icons.calendar_today,
                               color: Color(0xFF0A8ED9),
                               size: 18,
                             ), // Ikon di sebelah kiri
                             const SizedBox(
                                 width: 8), // Spacer antara ikon dan teks
                             Text(
-                              '2 Adult..',
+                              'Date',
                               style: GoogleFonts.raleway(
                                 textStyle: const TextStyle(
                                   color: Color(0xFF0A8ED9),
@@ -325,7 +285,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
