@@ -397,6 +397,7 @@ class _LandmarkNavState extends State<LandmarkNav> {
                                       Text(
                                         landmarkNavViewModel.listDataNear[index]
                                             ['alamat'],
+                                        maxLines: 2,
                                         style: GoogleFonts.montserrat(
                                           textStyle: const TextStyle(
                                             color: Colors.black,
